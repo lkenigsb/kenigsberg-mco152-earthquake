@@ -15,6 +15,7 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class EarthquakeFrame extends JFrame
 {
+    FeatureCollection featureCollection;
     public EarthquakeFrame() throws IOException {
 
         URL url = new URL("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson");
@@ -24,8 +25,9 @@ public class EarthquakeFrame extends JFrame
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         Gson gson = new Gson();
-        //This will tell gson: take this JSon and take this class and create classes of this configuration of JSon
-        FeatureCollection featureCollection = gson.fromJson(reader,FeatureCollection.class);
+        //This will tell gson: take this JSon and take this class and
+        // create classes of this configuration of JSon
+        featureCollection = gson.fromJson(reader, FeatureCollection.class);
 
 
         JPanel mainPanel = new JPanel();
@@ -37,8 +39,9 @@ public class EarthquakeFrame extends JFrame
         title.setForeground(Color.BLACK);
         mainPanel.add(title, BorderLayout.NORTH);
 
-        JLabel weatherInfo = new JLabel(featureCollection.features[0].properties.place, SwingConstants.CENTER);
-        weatherInfo.setFont(new Font(Font.MONOSPACED,Font.BOLD,30));
+        JLabel weatherInfo = new JLabel(featureCollection.features[0].properties.place
+                , SwingConstants.CENTER);
+        weatherInfo.setFont(new Font(Font.MONOSPACED, Font.BOLD, 30));
         weatherInfo.setForeground(Color.LIGHT_GRAY);
         mainPanel.add(weatherInfo, BorderLayout.CENTER);
 

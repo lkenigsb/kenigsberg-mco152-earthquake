@@ -17,7 +17,8 @@ public class Main {
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         Gson gson = new Gson();
-        //This will tell gson: take this JSon and take this class and create classes of this configuration of JSon
+        //This will tell gson: take this JSon and take this
+        class and create classes of this configuration of JSon
         FeatureCollection featureCollection = gson.fromJson(reader,FeatureCollection.class);
         System.out.println(featureCollection.features[0].properties.place);
 
