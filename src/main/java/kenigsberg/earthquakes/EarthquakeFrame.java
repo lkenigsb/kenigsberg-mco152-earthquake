@@ -62,7 +62,7 @@ public class EarthquakeFrame extends JFrame {
         //getLatestEarthquakes returns and observable,
         // we're creating a .subscribe on that Observable
         //.subscribe takes in 2 things:
-        //a Consumer which is hapy path, what should happen if successful
+        //a Consumer which is happy path, what should happen if successful
         //another Consumer which throws an exception - if there was an error
         Disposable disposable = service.getLatestEarthquakes()
                 .subscribeOn(Schedulers.io())
